@@ -8,6 +8,17 @@ Tablexplore is an application for data analysis and plotting built in Python usi
 
 This application is intended primarily for educational/scientific use and allows quick visualization of data with convenient plotting. The primary goal is to let users explore their tables interactively without any prior programming knowledge and make interesting plots as they do this. One advantage is the ability to load and work with relatively large tables as compared to spreadsheets. The focus is on data manipulation rather than data entry. Though basic cell editing and row/column changes are supported.
 
+## Run Development Version
+
+Clone the repository and start a virtual environment using Python 3.7
+```bash
+virtualenv venv --python=python3.7.4
+venv/Scripts/activate
+```
+Install the dependencies. If while running the program you encounter dependency errors, try installing the dependencies manually using `pip install <dependency>`.
+```bash
+pip install .
+```
 ## Installation
 
 For all operating systems with Python and pip installed:
