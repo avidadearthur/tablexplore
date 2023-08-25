@@ -2068,17 +2068,19 @@ class DataFrameModel(QtCore.QAbstractTableModel):
 
         if role == QtCore.Qt.DisplayRole:
             if orientation == QtCore.Qt.Horizontal:
-                return str(self.df.columns[col])
-            if orientation == QtCore.Qt.Vertical:
-                value = self.df.index[col]
-                if type( self.df.index) == pd.DatetimeIndex:
-                    if not value is pd.NaT:
-                        try:
-                            return value.strftime(TIMEFORMAT)
-                        except:
-                            return ''
-                else:
-                    return str(value)
+                if col < len(self.df.columns):
+                    return str(self.df.columns[col])
+            elif orientation == QtCore.Qt.Vertical:
+                if col < len(self.df.index):
+                    value = self.df.index[col]
+                    if type(self.df.index) == pd.DatetimeIndex:
+                        if value is not pd.NaT:
+                            try:
+                                return value.strftime(TIMEFORMAT)
+                            except:
+                                return ''
+                    else:
+                        return str(value)
         return None
 
     def setData(self, index, value, role=QtCore.Qt.EditRole):
